@@ -1,0 +1,59 @@
+{
+    "dao": "berezkaflexdao",
+    "network": "rinkeby",
+    "wsrpc": "wss://rinkeby.infura.io/ws/v3/c228c742aafd4d15ba6842f3f7d3ae8c",
+    "privateKey": "",
+    "useFrame": false,
+    "gasPrice": "60",
+    "appSettings": {
+        "tokens": [
+            {
+                "name": "BerezkaGovernanceToken",
+                "symbol": "BEGO",
+                "decimalUnits":18,
+                "transferEnabled":true,
+                "holders": [
+                    "0x9953EEa56194E67DbD87D1E54c59488Ce0bcf624"
+                ],
+                "stakes": [
+                    "1000000000000000000"
+                ]
+            },
+            {
+                "name": "BerezkaFLEX",
+                "symbol": "FLEX",
+                "decimalUnits":18,
+                "transferEnabled":true,
+                "holders": [
+                    "0x9953EEa56194E67DbD87D1E54c59488Ce0bcf624"
+                ],
+                "stakes": [
+                    "1000000000000000000"
+                ]
+            }
+        ],
+        "voting": {
+            "supportRequiredPercentage": 600000000000000000,
+            "minAcceptQuorum": 250000000000000000,
+            "voteTime": 604800
+        },
+        "finance": {
+            "budgetPeriod": 2592000
+        },
+        "addressBook": {},
+        "reward": {},
+        "dotVoting": {
+            "minQuorum": 500000000000000000,
+            "candidateSupportPct": 0,
+            "voteDuration": 604800
+        },
+        "allocations": {
+            "period": 2592000
+        },
+        "delay": {
+            "period": 60480
+        },
+        "tokenRequest": {},
+        "redemptions": {}
+    }
+}

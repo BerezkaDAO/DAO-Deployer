@@ -1,0 +1,40 @@
+
+address=0x9953EEa56194E67DbD87D1E54c59488Ce0bcf624
+voting=0xcF2f5aed2476D4bBaBBC260b1dFfAe89c758aA49
+
+dao install --environment aragon:rinkeby 0x2859dF93cAf233E006A567fE33d69640E45415ba dot-voting.aragonpm.eth --app-init-args 0xc7fb664b0bf83a5e1105b43482199c1242c3d58a 500000000000000000 0 604800 
+
+dao install 0x2859dF93cAf233E006A567fE33d69640E45415ba address-book.aragonpm.eth --environment aragon:rinkeby
+
+dao new --environment aragon:rinkeby --aragon-id testhubxx222
+
+aragon dao install 0x9acd4F7621CFC37B1462FBd22D401DD796ab2083 delay.aragonpm.eth --app-init-args 100000 --environment aragon:rinkeby
+
+#INSTALL TOKENS
+dao token new "Member" "MBR" 0 --environment aragon:rinkeby
+
+dao install $dao token-manager --app-init none --environment aragon:rinkeby
+
+dao token change-controller $token $tokenmanager --environment aragon:rinkeby
+
+dao acl create $dao $tokenmanager MINT_ROLE $address $address --environment aragon:rinkeby
+
+dao exec $dao $tokenmanager initialize $token false 1  --environment aragon:rinkeby
+
+#INSTALL VOTING
+dao install $dao voting --app-init-args $token 600000000000000000 250000000000000000 604800 --environment aragon:rinkeby
+
+dao acl create $dao $voting CREATE_VOTES_ROLE $tokenmanager $voting --environment aragon:rinkeby
+
+#review permissions
+dao acl $dao --environment aragon:rinkeby
+
+#DELAY APP
+dao install $dao delay.aragonpm.eth --app-init-args 60480 --environment aragon:rinkeby
+delay=0xf319c2ABd0C977C51df048865A355Cba1e868885
+
+dao acl create $dao $delay DELAY_EXECUTION_ROLE $voting $voting --environment aragon:rinkeby
+dao acl create $dao $delay SET_DELAY_ROLE $voting $voting --environment aragon:rinkeby
+dao acl create $dao $delay PAUSE_EXECUTION_ROLE $token $voting --environment aragon:rinkeby
+dao acl create $dao $delay RESUME_EXECUTION_ROLE $voting $voting --environment aragon:rinkeby
+dao acl create $dao $delay CANCEL_EXECUTION_ROLE $token $voting --environment aragon:rinkeby

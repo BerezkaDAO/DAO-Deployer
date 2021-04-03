@@ -1,0 +1,29 @@
+{
+    "dao": "fan1225213",
+    "network": "rinkeby",
+    "privateKey": "",
+    "tokenName": "fantoken252",
+    "tokenSymbol": "ft1252",
+    "holders": [
+        "0x9953EEa56194E67DbD87D1E54c59488Ce0bcf624"
+    ],
+    "stakes": [
+        "1000000000000000000"
+    ],
+    "votingSettings": [
+        "500000000000000000",
+        "50000000000000000",
+        "604800"
+    ],
+    "financePeriod": 1296000,
+    "useAgentAsVault": true,
+    "assigningAragonId": true,
+    "useAddressBook": false,
+    "useAllocations": false,
+    "useDelay": false,
+    "useDotVoting": false,
+    "useProjects": false,
+    "useRedemptions": false,
+    "useReward": false,
+    "useTokenRequest": false
+}
